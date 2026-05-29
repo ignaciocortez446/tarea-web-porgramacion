@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafío Web 2005 - Portal de Modelos</title>
+    
+    <style>
+        :root {
+            --fondo-pantalla: #f4f7fb;
+            --fondo-tarjeta: #ffffff;
+            --texto-principal: #1e293b;
+            --texto-secundario: #64748b;
+            --azul-tecnologico: #0284c7;
+            --borde-sutil: #e2e8f0;
+            --gradiente-inicio: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: var(--fondo-pantalla); 
+            color: var(--texto-principal); 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            line-height: 1.6;
+            padding-bottom: 30px; 
+        }
+        #cabeceraPrincipal { 
+            background: var(--gradiente-inicio); 
+            color: white;
+            padding: 35px 15px; 
+            text-align: center; 
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+        #cabeceraPrincipal h1 { font-size: 1.5rem; font-weight: 800; }
+        #cabeceraPrincipal h2 { font-size: 0.95rem; color: #e0f2fe; margin-top: 6px; font-weight: 400; }
+        
+        .estudiante-datos {
+            margin-top: 12px;
+            font-size: 0.8rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .wrapper { width: 100%; padding: 20px 15px; }
+        
+        .seccion-bloque { 
+            background-color: var(--fondo-tarjeta); 
+            border-radius: 14px; 
+            padding: 24px; 
+            margin-bottom: 15px; 
+            border: 1px solid var(--borde-sutil); 
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+        }
+        .seccion-bloque h3 { 
+            margin-bottom: 10px; 
+            font-size: 1.15rem; 
+            border-left: 4px solid var(--azul-tecnologico); 
+            padding-left: 10px; 
+        }
+        .seccion-bloque p { color: var(--texto-secundario); font-size: 0.95rem; margin-bottom: 15px; }
+        
+        .control-input { display: flex; flex-direction: column; margin-bottom: 15px; }
+        .control-input label { margin-bottom: 6px; font-size: 0.9rem; font-weight: 600; }
+        
+        #btnDispararCalculo { 
+            background: var(--gradiente-inicio); 
+            color: white; 
+            border: none; 
+            padding: 15px; 
+            font-size: 1rem; 
+            font-weight: 700; 
+            border-radius: 10px; 
+            width: 100%; 
+            cursor: pointer; 
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+        }
+        #btnDispararCalculo:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2); }
+        
+        #piePagina { background-color: var(--fondo-tarjeta); text-align: center; padding: 25px 15px; margin-top: 25px; border-top: 1px solid var(--borde-sutil); }
+        .red-enlaces { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+        .red-enlaces a { color: var(--azul-tecnologico); text-decoration: none; background-color: #f1f5f9; padding: 12px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; }
+        
+        @media (min-width: 768px) {
+            .wrapper { max-width: 740px; margin: 25px auto; }
+            #cabeceraPrincipal h1 { font-size: 2.1rem; }
+            #btnDispararCalculo { width: auto; padding: 14px 35px; }
+            .red-enlaces { flex-direction: row; justify-content: center; gap: 30px; }
+            .red-enlaces a { background-color: transparent; padding: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="cabeceraPrincipal">
+        <div class="header-content">
+            <h1>Desafío Web 2005</h1>
+            <h2>Matemáticas que resuelven problemas: Portal Multimodelo</h2>
+            <p class="estudiante-datos">Autor: Ignacio Cortez Mansilla</p>
+        </div>
+    </header>
+
+    <main class="wrapper">
+        <section class="seccion-bloque">
+            <h3>Selecciona el Modelo Matemático</h3>
+            <p>Elige mediante este formulario cuál de las 3 aplicaciones web deseas ejecutar y evaluar en este momento:</p>
+            
+            <form onsubmit="redirigirModelo(event)">
+                <div class="control-input">
+                    <label for="selectorModelo">Modelos Disponibles:</label>
+                    <select id="selectorModelo" style="padding: 14px; font-size: 1rem; border: 1px solid #cbd5e1; border-radius: 8px; background-color: #ffffff; width: 100%; cursor: pointer;" required>
+                        <option value="" disabled selected>-- Elige una opción --</option>
+                        <option value="paginafibonacci\index2.html">📊 Modelo 1: Plan de Ahorro (Fibonacci)</option>
+                        <option value="paginaprimos\index3.html">🔒 Modelo 2: Validación de Claves (Primos)</option>
+                        <option value="paginamixta\index4.html">🧬 Modelo 3: Criptografía (Fibonacci + Primos)</option>
+                    </select>
+                </div>
+                <button type="submit" id="btnDispararCalculo">Ingresar al Modelo Seleccionado</button>
+            </form>
+        </section>
+    </main>
+
+    <footer id="piePagina">
+        <p>Documentación y Despliegue del Proyecto:</p>
+        <div class="red-enlaces">
+            <a href="https://github.com/ignaciocortez446/programcion-web-hoy-tarea" target="_blank" id="enlaceGit">Código en GitHub</a>
+            <a href="https://ignaciocortez446.github.io/desafio-lunes-tarea/" target="_blank" id="enlaceDespliegue">Sitio Web en Vivo</a>
+        </div>
+    </footer>
+
+    <script>
+        function redirigirModelo(event) {
+            event.preventDefault(); // Evita que la página se recargue sola
+            var url = document.getElementById("selectorModelo").value;
+            if(url) {
+                window.location.href = url; // Te manda directo a la página interna elegida
+            }
+        }
+    </script>
+</body>
+</html>
