@@ -72,7 +72,7 @@ Optimización de Código: Los motores en JavaScript se ejecutan de manera nativa
 🔗 Enlaces del Proyecto
 Código Fuente: https://github.com/ignaciocortez446/tarea-web-porgramacion
 
-Despliegue en Vivo: Sitio Web en GitHub Pages
+Despliegue en Vivo: https://ignaciocortez446.github.io/tarea-web-porgramacion/
 
 
 
